@@ -13,12 +13,12 @@ public class WebController {
 	
 	@RequestMapping("/webprivado")
 	public String privado() {
-		return "privado";
+		return "private";
 	}
 	
 	@RequestMapping("/webpublico")
 	public String loginpub() {
-		return "publico";
+		return "public";
 	}
 	
 	@RequestMapping("/webadmin")

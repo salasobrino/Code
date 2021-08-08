@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter{
 	
-	  @RequestMapping("/publica")
+	  @RequestMapping("/public")
 	  public String publico() {
 	    return "Pagina Publica";
 	  }
-	  @RequestMapping("/privada")
+	  @RequestMapping("/private")
 	  public String privada() {
 	    return "Pagina Privada";
 	  }
@@ -26,9 +26,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	  @Override
 	  public void configure(HttpSecurity http) throws Exception {
 			http
-			.authorizeRequests().antMatchers("/oauth/token", "/oauth/authorize**", "/publica").permitAll();
+			.authorizeRequests().antMatchers("/oauth/token", "/oauth/authorize**", "/public").permitAll();
 //			 .anyRequest().authenticated();
-			http.requestMatchers().antMatchers("/privada")
+			http.requestMatchers().antMatchers("/private")
 			.and().authorizeRequests()
 			.antMatchers("/privada").access("hasRole('USER')")
 			.and().requestMatchers().antMatchers("/admin")
